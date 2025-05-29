@@ -1,0 +1,198 @@
+/* Базовые стили */
+body {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #202124;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+h1 {
+    color: #1a73e8;
+    text-align: center;
+    font-size: clamp(20px, 5vw, 24px); /* Адаптивный размер */
+    margin: 20px 0;
+    font-weight: 400;
+    padding: 0 15px;
+}
+
+/* Контейнер с адаптивной сеткой */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.1);
+}
+
+/* Оптимизация форм для мобильных */
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #5f6368;
+    font-size: clamp(14px, 4vw, 16px); /* Адаптивный размер */
+}
+
+input[type="number"], 
+select {
+    width: 100%;
+    padding: 12px; /* Увеличено для сенсорных экранов */
+    border: 1px solid #dadce0;
+    border-radius: 8px; /* Большее скругление */
+    font-size: 16px; /* Крупнее текст для мобильных */
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    -webkit-appearance: none; /* Убирает стили по умолчанию на iOS */
+    min-height: 48px; /* Минимальная высота для accessibility */
+}
+
+/* Радио-кнопки для мобильных */
+input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* Кнопки с увеличенной областью нажатия */
+.buttonS {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap; /* Перенос на маленьких экранах */
+    padding: 0 15px;
+}
+
+button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    min-width: 140px; /* Фиксированная ширина для стабильности */
+    min-height: 48px; /* Достаточный размер для пальцев */
+}
+
+button:hover, button:focus {
+    background-color: #1765cc;
+    box-shadow: 0 2px 5px rgba(66, 133, 244, 0.3);
+    transform: translateY(-1px); /* Микро-анимация */
+}
+
+/* Вывод результатов */
+.output {
+    max-width: 1000px;
+    margin: 0 auto 30px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.1);
+    overflow-x: auto; /* Горизонтальная прокрутка для таблиц */
+}
+
+#outputHeader {
+    color: #1a73e8;
+    font-size: clamp(18px, 4vw, 20px);
+    font-weight: 400;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Адаптивная таблица */
+#outputTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: clamp(14px, 3vw, 16px);
+}
+
+#outputTable th, #outputTable td {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+    white-space: nowrap; /* Предотвращает перенос заголовков */
+}
+
+#outputTable th {
+    background-color: #f1f3f4;
+    color: #3c4043;
+    font-weight: 500;
+}
+
+/* Медиа-запросы для мобильных устройств */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .buttonS {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    /* Улучшение для таблиц на маленьких экранах */
+    #outputTable {
+        display: block;
+        width: 100%;
+    }
+
+    #outputTable thead {
+        display: none; /* Скрываем заголовки на мобильных */
+    }
+
+    #outputTable tr {
+        display: block;
+        margin-bottom: 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+    }
+
+    #outputTable td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #f1f3f4;
+    }
+
+    #outputTable td:before {
+        content: attr(data-label);
+        font-weight: 500;
+        color: #5f6368;
+        margin-right: 10px;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    input[type="number"], 
+    select {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    button {
+        padding: 10px;
+        min-width: auto;
+    }
+}

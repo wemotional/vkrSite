@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Balueva E.U.</title>
+        <link rel="stylesheet" type="text/css" href = "style.css">
+    </head>
+    <body>
+        
+        <h1>ПОДБОР МАТЕРИАЛОВ ТРУБОПРОВОДА ХВС</h1>
+        <div class="container">
+            <div>
+                <form>
+                    <label for = "minTemp"> Мин. температура, °C:</label><br>
+                    <input type = "number" id = minTempInput><br>
+                </form>
+            </div>
+            <div>
+                <form>
+                    <label for = "minTemp"> Макс. температура, °C:</label><br>
+                    <input type = "number" id = maxTempInput><br>
+                </form>
+                </div>
+            <div>
+                <label for= "padType" >Тип прокладки: </label><br>
+                    <select name = "pad" id = "padType">
+                    <option value = "0">--Выбор прокладки--</option>
+                    <option value = "1">Надземная</option>  <!--1 в базе данных поле supported_laiyng_types-->
+                    <option value = "2">Подземная</option> <!--2 в базе данных поле supported_laiyng_types-->
+                    <option value = "3">Внутренняя</option> <!--3 в бд поле supported_laiyng_types-->
+                </select>              
+            </div>
+            <div>
+                <label for="areaType">Агрессивная среда:</label><br>
+                <select name = "areas" id = "areaType">
+                <option value="0">--Выбор среды--</option>
+                <option value="1">Неагрессивная</option> <!--1 в бд поле max_aggresion_level-->
+                <option value="2">Слабоагрессивная</option><!--2 в бд поле max_aggresion_level-->
+                <!--<option value="midleagressive">Среднеагрессивная</option> -->
+                <option value="3">Сильноагрессивная</option> <!--3 в бд поле max_aggresion_level-->
+                </select>
+            </div>
+            <div>
+                <form>
+                    <label for = "uvType" >УФ-воздействие:<br></label>  <!---->
+                    <input name = "uv" id = "uvResist" type = "radio" value = 1 >Присутствует<br></input> <!-- 1 в бд поле uv_resistant-->
+                    <input name = "uv" id = "uvResist" type = "radio" value = 0 >Отсутствует<br></input> <!-- 0 в бд поле uv_resistant-->
+                </form>
+            </div>
+            <div>
+                <form>
+                <label for = "pressureInput">Давление, бар:</label><br>
+                <input type = "number" id = "pressureInput"><br>
+                </form>
+            </div>
+            <div>
+                <form>
+                <label for = "pipelineLenght">Длина трубопровода, м:</label><br>
+                <input type = "number" id = "pipelineLenght"><br>
+                </form>
+        </div>
+        </div>
+        <div class = "buttonS">
+            <div>
+                <button id = "buttonSearch">Подбор</button>
+            </div>    
+            <div>
+                <button id = "buttonCount">Расчет стоимости</button>
+            </div>
+        </div>
+        <div class = "buttonC">
+            
+        </div>
+        <div class = "output">
+                <h2 id = "outputHeader"></h2>
+                <table id = "outputTable">
+                    
+                </table>
+
+        </div>
+        <script src = "main.js"></script>
+        </body>
+</html>
